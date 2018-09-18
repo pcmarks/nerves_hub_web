@@ -94,6 +94,13 @@ defmodule NervesHubWWWWeb.DeviceController do
     |> redirect(to: device_path(conn, :index))
   end
 
+  def console(%{assigns: %{current_org: org}} = conn, %{
+        "device_id" => id
+      }) do
+    {:ok, device} = Devices.get_device_by_org(org, id)
+    render(conn, "console.html", device: device)
+  end
+
   @doc """
   Convert tags from a list to a comma-separated list (in a string)
   """

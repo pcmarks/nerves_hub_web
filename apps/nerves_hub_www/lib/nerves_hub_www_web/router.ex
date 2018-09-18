@@ -74,7 +74,9 @@ defmodule NervesHubWWWWeb.Router do
     post("/account/certificates/create", AccountCertificateController, :create)
     get("/account/certificates/:id/download", AccountCertificateController, :download)
 
-    resources("/devices", DeviceController)
+    resources("/devices", DeviceController) do
+      get("/console", DeviceController, :console)
+    end
 
     resources "/products", ProductController, except: [:edit, :update] do
       pipe_through(:product_level)
