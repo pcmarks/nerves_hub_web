@@ -80,4 +80,5 @@ channel.join()
   .receive("ok", resp => {})
   .receive("error", resp => {})
 
+window["socket"] = socket;
 export default socket

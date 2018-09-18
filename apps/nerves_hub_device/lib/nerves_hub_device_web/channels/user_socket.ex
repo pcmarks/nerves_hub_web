@@ -5,6 +5,7 @@ defmodule NervesHubDeviceWeb.UserSocket do
   ## Channels
   # channel "room:*", NervesHubWWWWeb.RoomChannel
   channel("firmware:*", NervesHubDeviceWeb.DeviceChannel)
+  channel("console:*", NervesHubDeviceWeb.ConsoleChannel)
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After

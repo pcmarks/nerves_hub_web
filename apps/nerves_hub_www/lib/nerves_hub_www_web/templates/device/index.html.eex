@@ -38,6 +38,8 @@
           </td>
           <td class="col-2">
             <a href="<%= device_path(@conn, :edit, device.id) %>" class="btn btn-info">Edit</a>
+            <%= # TODO(Connor) - I Feel like there is a devices_path(@conn, :console, device) thing that should work. %>
+            <%= link "Console", class: "btn btn-info", to: "/devices/#{device.id}/console", method: :get, data: [id: device.id] %>
             <%= link "Delete", class: "btn btn-danger", to: device_path(@conn, :delete, device), method: :delete, data: [confirm: "Are you sure?"]%>
           </td>
         </tr>

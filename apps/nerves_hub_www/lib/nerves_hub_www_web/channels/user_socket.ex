@@ -2,6 +2,7 @@ defmodule NervesHubWWWWeb.UserSocket do
   use Phoenix.Socket
 
   channel("devices:*", NervesHubWWWWeb.DevicesChannel)
+  channel("console:*", NervesHubWWWWeb.ConsoleChannel)
 
   def connect(%{"token" => token}, socket) do
     case Phoenix.Token.verify(socket, "user salt", token, max_age: 86400) do
