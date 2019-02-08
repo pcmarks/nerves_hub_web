@@ -24,6 +24,7 @@ defmodule NervesHubAPIWeb.ConnCase do
       use Phoenix.ConnTest
       import NervesHubAPIWeb.Router.Helpers
       import NervesHubAPIWeb.ConnCase, only: [build_auth_conn: 0, peer_data: 0]
+      import Bureaucrat.Helpers
 
       # The default endpoint for testing
       @endpoint NervesHubAPIWeb.Endpoint

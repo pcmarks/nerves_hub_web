@@ -188,6 +188,7 @@ defmodule NervesHubDeviceWeb.WebsocketTest do
         },
         1000
       )
+      |> doc()
     end
 
     test "does not receive update message when current_version matches target_version" do

@@ -9,9 +9,9 @@ use Mix.Config
 # back to each application for organization purposes.
 import_config "../apps/*/config/config.exs"
 
-# Sample configuration (overrides the imported configuration above):
-#
-#     config :logger, :console,
-#       level: :info,
-#       format: "$date $time [$level] $metadata$message\n",
-#       metadata: [:user_id]
+# Shared Bureaucrat config for generating API docs
+config :bureaucrat,
+  json_library: Jason,
+  default_path: "API.md"
+  #writer: Bureaucrat.MarkdownWriter
+  #writer: Bureaucrat.ApiBlueprintWriter

@@ -7,10 +7,10 @@ defmodule NervesHubAPIWeb.DeviceControllerTest do
       identifier = "api-device-1234"
       device = %{identifier: identifier, description: "test device", tags: ["test"]}
 
-      conn = post(conn, device_path(conn, :create, org.name), device)
+      conn = post(conn, device_path(conn, :create, org.name), device) |> doc
       assert json_response(conn, 201)["data"]
 
-      conn = get(conn, device_path(conn, :show, org.name, device.identifier))
+      conn = get(conn, device_path(conn, :show, org.name, device.identifier)) |> doc
       assert json_response(conn, 200)["data"]["identifier"] == identifier
     end
 
@@ -28,7 +28,7 @@ defmodule NervesHubAPIWeb.DeviceControllerTest do
 
       device = Fixtures.device_fixture(org, firmware)
 
-      conn = get(conn, device_path(conn, :index, org.name))
+      conn = get(conn, device_path(conn, :index, org.name)) |> doc
 
       assert json_response(conn, 200)["data"]
 
