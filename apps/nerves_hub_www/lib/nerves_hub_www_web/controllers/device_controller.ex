@@ -29,6 +29,13 @@ defmodule NervesHubWWWWeb.DeviceController do
     )
   end
 
+  def console(%{assigns: %{current_org: org}} = conn, %{
+      "device_id" => id
+      }) do
+    device = Devices.get_device_by_org!(org, id)
+    live_render(conn, NervesHubWWWWeb.DeviceLive.Console, session: %{device: device})
+  end
+
   def create(%{assigns: %{current_org: org}} = conn, %{"device" => params}) do
     params
     |> Map.put("org_id", org.id)

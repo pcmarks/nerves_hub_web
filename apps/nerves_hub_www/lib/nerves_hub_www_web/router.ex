@@ -77,7 +77,11 @@ defmodule NervesHubWWWWeb.Router do
     get("/account/certificates/:id/download", AccountCertificateController, :download)
 
     # :update is handled by DeviceLive.Edit
-    resources("/devices", DeviceController, except: [:update])
+    resources("/devices", DeviceController, except: [:update]) do
+      get("/console", DeviceController, :console)
+    end
+
+    # live "/devices/:id/console", DeviceLive.Console, session: [:path_params, :auth_user_id, :current_org_id]
 
     resources "/products", ProductController, except: [:edit, :update] do
       pipe_through(:product_level)
